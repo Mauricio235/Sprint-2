@@ -4,8 +4,7 @@ print("###############################")
 
 
 
-
-numero_secreto = 54
+numero_secreto = int(random.random() * 100)
 total_de_tentativas = 3
 
 

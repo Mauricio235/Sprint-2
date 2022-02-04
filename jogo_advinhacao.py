@@ -3,8 +3,12 @@ print("O jogo de advinhação começou!!!")
 print("###############################")
 
 
+
+
 numero_secreto = 54
 total_de_tentativas = 3
+
+
 numero_jogada = total_de_tentativas
 rodada = 1
 for rodada in range (1, total_de_tentativas+1):

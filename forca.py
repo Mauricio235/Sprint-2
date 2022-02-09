@@ -5,8 +5,10 @@ def jogar():
     print("**O jogo de forca começou!!!**")
     print("###############################")
 
-    palavra_secreta = "banana".upper()
-    letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+    palavra_secreta = "maçã".upper()
+    letras_acertadas = ["_" for letra in palavra_secreta]
+
+
     erros = 0
 
     enforcou = False
@@ -34,7 +36,7 @@ def jogar():
 
         if (acertou):
             print("Você ganhou!!!")
-        else:
+        elif(enforcou):
             print("Você perdeu :(")
 
 

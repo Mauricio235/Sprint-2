@@ -1,6 +1,43 @@
 import random
 
 
+def jogar():
+
+    imprime_introdução()
+
+    palavra_secreta = carrega_palavra_acertada()
+
+    letras_acertadas = inicializa_palavra_secreta(palavra_secreta)
+    erros = 0
+
+    enforcou = False
+    acertou = False
+
+    print(letras_acertadas)
+    #Enquanto não enforcou e não acertou
+    while (not enforcou and not acertou):
+
+
+        chute = pede_chute()
+
+        if (chute in palavra_secreta):
+            marc_chute_correto(palavra_secreta, letras_acertadas, chute)
+        else:
+            erros = erros + 1
+            desenha_forca(erros)
+
+        acertou = "_" not in letras_acertadas
+        enforcou = erros ==6
+
+        if (acertou):
+            imprime_mensagem_succeso()
+        elif(enforcou):
+            imprime_mensagem_fracasso(palavra_secreta)
+
+
+    print("Fim do jogo!!")
+
+
 def imprime_introdução():
     print("###############################")
     print("**O jogo de forca começou!!!**")
@@ -40,48 +77,91 @@ def marc_chute_correto(palavra_secreta, letras_acertadas, chute):
     print(letras_acertadas)
 
 
-def imprime_mensagem_fracasso():
-    print("Você perdeu!!!")
+def imprime_mensagem_fracasso(palavra_secreta):
+    print("Puxa, você foi enforcado!")
+    print("A palavra era {}".format(palavra_secreta))
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+
+def imprime_mensagem_succeso():
+    print("Parabéns, você ganhou!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
 
 
-def imprime_mensagem_suceso():
-    print("Você Ganhou!!!")
 
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
 
-def jogar():
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
 
-    imprime_introdução()
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
 
-    palavra_secreta = carrega_palavra_acertada()
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
 
-    letras_acertadas = inicializa_palavra_secreta(palavra_secreta)
-    erros = 0
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
 
-    enforcou = False
-    acertou = False
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
 
-    print(letras_acertadas)
-    #Enquanto não enforcou e não acertou
-    while (not enforcou and not acertou):
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
 
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
 
-        chute = pede_chute()
+    print(" |            ")
+    print("_|___         ")
+    print()
 
-        if (chute in palavra_secreta):
-            marc_chute_correto(palavra_secreta, letras_acertadas, chute)
-        else:
-            erros = erros + 1
-
-        acertou = "_" not in letras_acertadas
-        enforcou = erros ==6
-
-        if (acertou):
-            imprime_mensagem_suceso()
-        elif(enforcou):
-            imprime_mensagem_fracasso()
-
-
-    print("Fim do jogo!!")
 
 jogar()
 

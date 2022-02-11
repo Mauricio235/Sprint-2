@@ -25,6 +25,29 @@ def inicializa_palavra_secreta(palavra_secreta):
     return ["_" for letra in palavra_secreta]
 
 
+def pede_chute():
+    chute = input("\nQual a letra?")
+    chute = chute.strip().upper()
+    return (chute)
+
+
+def marc_chute_correto(palavra_secreta, letras_acertadas, chute):
+    index = 0
+    for letra in palavra_secreta:
+        if (chute == letra):
+            letras_acertadas[index] = letra
+        index = index + 1
+    print(letras_acertadas)
+
+
+def imprime_mensagem_fracasso():
+    print("Você perdeu!!!")
+
+
+def imprime_mensagem_suceso():
+    print("Você Ganhou!!!")
+
+
 def jogar():
 
     imprime_introdução()
@@ -42,25 +65,20 @@ def jogar():
     while (not enforcou and not acertou):
 
 
-        chute = input("\nQual a letra?")
-        chute = chute.strip().upper()
+        chute = pede_chute()
 
         if (chute in palavra_secreta):
-            index = 0
-            for letra in palavra_secreta:
-                if (chute==letra):
-                    letras_acertadas[index] = letra
-                index = index+1
-            print(letras_acertadas)
+            marc_chute_correto(palavra_secreta, letras_acertadas, chute)
         else:
             erros = erros + 1
+
         acertou = "_" not in letras_acertadas
         enforcou = erros ==6
 
         if (acertou):
-            print("Você ganhou!!!")
+            imprime_mensagem_suceso()
         elif(enforcou):
-            print("Você perdeu :(")
+            imprime_mensagem_fracasso()
 
 
     print("Fim do jogo!!")
